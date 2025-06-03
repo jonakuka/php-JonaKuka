@@ -415,62 +415,6 @@ main.container {
 </main>
 
 <script>
-          const div = document.createElement('div');
-        div.className = 'gallery-item';
-        div.setAttribute('tabindex', '0');
-        div.setAttribute('data-category', item.category);
-        div.setAttribute('aria-label', `${item.category} - ${item.title}`);
-
-        if (item.category === 'quote') {
-          div.innerHTML = `
-            <div class="caption" style="font-size:1.2rem; background: none; color:#ffcc70;">${item.title}</div>
-            <div class="quote" style="font-weight: 700; font-style: normal; color:#fff; margin-top: 0.5rem;">
-              "${item.description}"
-            </div>
-          `;
-        } else {
-          div.innerHTML = `
-            <img src="${item.image_url}" alt="${item.title}" />
-            <div class="caption">${item.title}</div>
-            <div class="quote">${item.description}</div>
-          `;
-
-          // Enable modal for dynamic image items
-          div.addEventListener('click', () => {
-            modal.style.display = 'flex';
-            modalImg.src = item.image_url;
-            modalImg.alt = item.title;
-            modalCaption.textContent = `${item.title} — ${item.description}`;
-            modal.focus();
-          });
-
-          div.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault();
-              div.click();
-            }
-          });
-        }
-
-        gallery.appendChild(div);
-      });
-      // Load any existing submissions when the page loads
-window.addEventListener('DOMContentLoaded', loadSubmissions);
-
-
-  [
-  {
-    "title": "Kindness in Action",
-    "category": "photo",
-    "description": "A moment of shared laughter.",
-    "image_url": "https://example.com/photo.jpg"
-  },
-  {
-    "title": "Walk in Their Shoes",
-    "category": "quote",
-    "description": "Empathy begins with understanding life from another person’s perspective."
-  }
-]
   // Modal logic
   const modal = document.getElementById('modal');
   const modalImg = document.getElementById('modal-img');
